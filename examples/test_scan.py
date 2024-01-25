@@ -9,10 +9,11 @@ import picar_4wd as fc
 
 speed = 5 #super slow please
 distance = 25
-round = 1
+
 def main():
+    test_round = 1
     while True:
-        print(f"round {round} begins")
+        #print(f"round {test_round} begins")
         scan_list = fc.scan_step(distance) #try 25 centimeter
         if not scan_list:
             continue
@@ -28,7 +29,7 @@ def main():
             pass
         print(f"Next round in 3 seconds")
         time.sleep(3) # buy me some time to reset my obstacles
-        round += 1
+        test_round += 1
 
 
 if __name__ == "__main__":
