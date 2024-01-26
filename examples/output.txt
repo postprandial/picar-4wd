@@ -1,0 +1,87 @@
+Start
+round 1 begins
+round 1 begins
+round 1 begins
+round 1 begins
+round 1 begins
+This is tmp: [2, 2]
+This is scan_list: [2, 2, 2, 2, 2]
+Next round in 3 seconds
+round 2 begins
+round 2 begins
+round 2 begins
+round 2 begins
+round 2 begins
+round 2 begins
+round 2 begins
+round 2 begins
+round 2 begins
+round 2 begins
+This is tmp: [2, 2, 2, 2]
+This is scan_list: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+Next round in 3 seconds
+round 3 begins
+round 3 begins
+round 3 begins
+round 3 begins
+round 3 begins
+round 3 begins
+round 3 begins
+round 3 begins
+round 3 begins
+round 3 begins
+This is tmp: [2, 2, 2, 2]
+This is scan_list: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+Next round in 3 seconds
+round 4 begins
+round 4 begins
+round 4 begins
+round 4 begins
+round 4 begins
+round 4 begins
+round 4 begins
+round 4 begins
+round 4 begins
+round 4 begins
+This is tmp: [2, 2, 1, 0]
+This is scan_list: [0, 0, 0, 2, 2, 1, 0, 0, 2, 2]
+Next round in 3 seconds
+round 5 begins
+round 5 begins
+round 5 begins
+round 5 begins
+round 5 begins
+round 5 begins
+round 5 begins
+round 5 begins
+round 5 begins
+round 5 begins
+This is tmp: [2, 2, 2, 2]
+This is scan_list: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+Next round in 3 seconds
+round 6 begins
+round 6 begins
+round 6 begins
+round 6 begins
+round 6 begins
+round 6 begins
+round 6 begins
+round 6 begins
+round 6 begins
+round 6 begins
+This is tmp: [2, 2, 0, 2]
+This is scan_list: [0, 0, 0, 2, 2, 0, 2, 2, 2, 2]
+Next round in 3 seconds
+round 7 begins
+round 7 begins
+round 7 begins
+round 7 begins
+round 7 begins
+round 7 begins
+round 7 begins
+round 7 begins
+round 7 begins
+round 7 begins
+This is tmp: [2, 2, 2, 2]
+This is scan_list: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+Next round in 3 seconds
