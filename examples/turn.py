@@ -1,10 +1,10 @@
 import picar_4wd as fc
 import time, sys, select
 
-speed = 5
+power = 5
 
 while True:
-    print(f"turning with {speed} speed attempt 2")
+    print(f"turning with {power} speed attempt 2")
     time.sleep(5)
     if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
         line = input()
