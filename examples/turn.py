@@ -1,8 +1,7 @@
 import picar_4wd as fc
 import time, sys, select
-import picar_4wd as fcc
 
-power = 25
+power = 50
 
 while True:
     print(f"turning with {power} speed for 1 second: starting in 2 seconds")
@@ -14,8 +13,8 @@ while True:
     time.sleep(1)
     fc.stop()
     # power += 5
-    if power == 25:
-        power = 0
+    # if power == 40:
+    #    power = 5
 
 fc.stop()
 print("All done")
