@@ -12,6 +12,9 @@ from .utils import *
 import time
 from .version import __version__
 
+#David test
+print("Testing library")
+
 soft_reset()
 time.sleep(0.2)
 

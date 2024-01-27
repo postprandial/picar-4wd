@@ -1,5 +1,6 @@
 import picar_4wd as fc
 import time, sys, select
+import picar_4wd as fcc
 
 power = 25
 
