@@ -11,7 +11,7 @@ while True:
         break
     fc.turn_right(power)
     time.sleep(1)
-    fc.turn_right()
+    fc.stop()
     power += 5
     if power == 25:
         power = 0
