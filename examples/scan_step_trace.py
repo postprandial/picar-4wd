@@ -30,3 +30,10 @@ def main():
         print(f"Next round in 3 seconds")
         time.sleep(3) # this buys us 3 seconds before the next round to reset the obstacle
         test_round += 1
+
+if __name__ == "__main__":
+    try:
+        print("Start")
+        main()
+    finally:
+        fc.stop()
