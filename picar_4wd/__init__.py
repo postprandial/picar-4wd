@@ -132,10 +132,13 @@ def get_status_at(angle, ref1=35, ref2=10): # I am assuming that all these thing
     dist = get_distance_at(angle)
     if dist > ref1 or dist == -2: # -2 is a timeout, so obstacles are far away. Timeout or
         # dist > 35 cm means the coast is clear for you to drive but we might want to adjust it.
+        print(f"Dist: {dist}, get_status_at returns: 2")
         return 2
     elif dist > ref2: # between 10 cm  and 35 cm, there is something. avoid.
+        print(f"Dist: {dist}, get_status_at returns: 1")
         return 1
     else:
+        print(f"Dist: {dist}, get_status_at returns: 0")
         return 0 # what, less than 10 cm? definitely avoid. actually, stop.
 
 def scan_step(ref): # this increments & decrements the angle at which the ultra sonic module takes a sample, then
