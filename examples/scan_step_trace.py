@@ -12,6 +12,7 @@ speed = 5 # slow
 distance = 35 # for scan_step
 
 def main():
+    print(f"Start")
     test_round = 1
     while True:
         print(f"round {test_round} begins")
@@ -24,7 +25,6 @@ def main():
         print(f"This is scan_list: {scan_list}")
         if tmp != [2,2,2,2]:
             time.sleep(1)
-            fc.stop()
         else:
             pass
         print(f"Next round in 3 seconds")
