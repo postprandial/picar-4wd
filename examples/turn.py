@@ -12,7 +12,7 @@ while True:
     fc.turn_right(power)
     time.sleep(1)
     fc.stop()
-    power += 5
+    # power += 5
     if power == 25:
         power = 0
 
