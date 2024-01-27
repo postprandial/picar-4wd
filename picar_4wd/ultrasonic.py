@@ -4,8 +4,8 @@ from picar_4wd.pwm import PWM
 from picar_4wd.pin import Pin
 
 class Ultrasonic():
-    ANGLE_RANGE = 180
-    STEP = 18
+    ANGLE_RANGE = 180 # rotate 180 degrees
+    STEP = 18 #every 18 degrees
 
     def __init__(self, trig, echo, timeout=0.01):
         self.timeout = timeout
