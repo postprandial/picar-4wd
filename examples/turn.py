@@ -1,7 +1,7 @@
 import picar_4wd as fc
 import time, sys, select
 
-power = 5
+power = 25
 
 while True:
     print(f"turning with {power} speed for 1 second: starting in 2 seconds")

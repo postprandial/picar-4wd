@@ -5,12 +5,13 @@ import random
 import picar_4wd as fc
 
 speed = 5 # slow
+turn_speed = 20
 distance = 25 # 25 centimeter, argument for scan_step below
 
 def random_direction():
     '''picks either left or right and time period between 0.5 and 2 seconds for turning '''
     turns = [fc.turn_left, fc.turn_right]
-    turn_duration = random.uniform(0.5, 2)
+    turn_duration = random.uniform(1, 2)
     turn_direction = turns[random.randint(0,1)]
     return turn_direction, turn_duration
 
