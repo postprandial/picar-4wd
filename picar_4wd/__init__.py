@@ -127,18 +127,23 @@ def get_distance_at(angle):
     angle_distance = [angle, distance]
     return distance
 
-def get_status_at(angle, ref1=35, ref2=10):
+def get_status_at(angle, ref1=35, ref2=10): # I am assuming that all these things are distances in cm
+    # that we are comparing to the distance at which we measured the "obstacle"
     dist = get_distance_at(angle)
-    if dist > ref1 or dist == -2:
+    if dist > ref1 or dist == -2: # -2 is a timeout, so obstacles are far away. Timeout or
+        # dist > 35 cm means the coast is clear for you to drive but we might want to adjust it.
         return 2
-    elif dist > ref2:
+    elif dist > ref2: # between 10 cm  and 35 cm, there is something. avoid.
         return 1
     else:
-        return 0
+        return 0 # what, less than 10 cm? definitely avoid. actually, stop.
 
-def scan_step(ref):
+def scan_step(ref): # this increments & decrements the angle at which the ultra sonic module takes a sample, then
+    # uses "get_status_at" to take said sample
     global scan_list, current_angle, us_step
     current_angle += us_step
+    print(f"Current angle: {current_angle}")
+    print(f"us_step: {us_step}")
     if current_angle >= max_angle:
         current_angle = max_angle
         us_step = -STEP
