@@ -5,11 +5,11 @@
 # NO MOVEMENT. IT STAYS ON THE TABLE.
 
 import time
-
 import picar_4wd as fc
+import sys
 
-speed = 5 # slow
-distance = 35 # for scan_step
+distance = sys.argv[1]
+
 
 def main():
     print(f"Start")
@@ -28,7 +28,7 @@ def main():
         else:
             pass
         print(f"Next round in 3 seconds")
-        time.sleep(3) # this buys us 3 seconds before the next round to reset the obstacle
+        time.sleep(3) # time to reset obstacle
         test_round += 1
 
 

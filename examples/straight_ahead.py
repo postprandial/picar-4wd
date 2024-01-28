@@ -3,7 +3,7 @@
 import picar_4wd as fc
 import time, sys, select
 
-power = 5
+power = 30
 
 while True:
     print(f"forward with {power} power")

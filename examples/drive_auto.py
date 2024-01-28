@@ -1,45 +1,58 @@
-import time
-import random
+# Drives car autonomously per Lab 1A specifications
+# to be removed later: contains print statements for debugging & verbose comments
 
 import picar_4wd as fc
+import time, random
 
-speed = 5 # slow for driving forward and backward
-turn_speed = 20 # faster for turning
+power = 5 # slow for driving forward and backward.
+turn_power = 20 # faster for turning
 distance = 35 # argument for scan_step below so ultrasonic module looks for obstacles up to 35 cm
 
-def random_direction():
-    '''picks either left or right and time period between 0.5 and 2 seconds for turning '''
+# note on speed vs power: example scripts call the parameter for fc.forward, etc. alternatingly power or speed
+# I'll use power to distinguish it from the Speed class in the __init__
+
+
+def random_direction(min_time = 1, max_time = 2):
+    """picks left or right and time period between min_time and max_time seconds for turning"""
     turns = [fc.turn_left, fc.turn_right]
-    turn_duration = random.uniform(1, 2)
+    turn_duration = random.uniform(min_time, max_time)
     turn_direction = turns[random.randint(0,1)]
     return turn_direction, turn_duration
+
 
 def main():
     test_round = 1
     while True:
         print(f"round {test_round} begins")
-        fc.forward(speed)
-        scan_list = fc.scan_step(distance) # scan_step returns a list containing 10 samples from the ultrasonic module
-        # taken every 9 degrees (for a 90 degree field). It looks for obstacles at a distance of up to
-        # 35 centimeters (the value of distance).
+        fc.forward(power)
+        scan_list = fc.scan_step(distance)
+        # scan_step returns a list containing max_angle/STEP number of samples from the ultrasonic module taken
+        # every STEP degrees (for a ANGLE_RANGE field).
+        # It looks for obstacles that are up to "distance" centimeters away
         if not scan_list:
             continue
 
-        tmp = scan_list[7:12] # out of 10 samples, this list slice keeps samples 3,4,5,6,7,8 so the area in front of
-        # the car (it discards samples taken from the sides)
+        # grab center 4 samples from scan_list with even number of samples (5 samples if odd number)
+        scan_list_size = int(len(scan_list))
+        start_sample, end_sample = (scan_list_size//2 - 2), (scan_list_size//2 + 2) # indices to slice "center samples"
+        no_obstacles = [2 for i in scan_list[start_sample, end_sample]]
+        # no_obstacles is what "tmp" would look like if no obstacles were detected
+        # 2 means "no obstacles"
+        # 1 means "obstacles between outer boundary ref1 and near boundary ref2 cm - close but not yet too close
+        # 0 means "obstacles between ref2 and car's nose" -  very close.
+        tmp = scan_list[start_sample:end_sample] # these are the center samples we're actually evaluating for obstacles
+
         print(f"This is tmp: {tmp}")
+        print(f"This is no_obstacles: {no_obstacles}")
         print(f"This is scan_list: {scan_list}")
-        if tmp != [2,2,2,2,2,2]: # 2 seems to mean "no obstacle within distance specified". If those samples from the front
-            # for now, simply backs up only for one second. 1 would mean "obstacle between outer boundary (35 cm here)
-            # and inner boundary (10 cm). Those two boundaries are the parameters ref1 and ref2 in the function
-            # get_status_at in __init__.py . I haven't yet made enough use of this inner boundary, imo.
-            fc.backward(speed)
-            time.sleep(1)
-            fc.stop()
+
+        if tmp != no_obstacles:
+            fc.backward(power)
+            time.sleep(1) # decreased sleep increase speed for forwards
             # picks random new direction
-            turn_this_way, duration = random_direction()
-            turn_this_way(turn_speed) #this is faster for obvious reasons
-            time.sleep(duration) #duration is how long it spins
+            turn_this_way, duration = random_direction(1,2)
+            turn_this_way(turn_power) # this is faster for obvious reasons
+            time.sleep(duration) # duration is how long it spins
             fc.stop()
 
         test_round += 1

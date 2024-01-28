@@ -82,8 +82,8 @@ def get_line_status(ref,fl_list):#170<x<300
 
 ########################################################
 # Ultrasonic
-ANGLE_RANGE = 145
-STEP = 7.25
+ANGLE_RANGE = 90
+STEP = 9
 us_step = STEP
 angle_distance = [0,0]
 current_angle = 0
@@ -124,22 +124,28 @@ def get_distance_at(angle):
     angle_distance = [angle, distance]
     return distance
 
-def get_status_at(angle, ref1=35, ref2=10): # I am assuming that all these things are distances in cm
-    # that we are comparing to the distance at which we measured the "obstacle"
+
+def get_status_at(angle, ref1=35, ref2=10):
     dist = get_distance_at(angle)
-    if dist > ref1 or dist == -2: # -2 is a timeout, so obstacles are far away. Timeout or
-        # dist > 35 cm means the coast is clear for you to drive but we might want to adjust it.
+    if dist > ref1 or dist == -2:
+        # -2 is a timeout, so obstacles are far away.
+        # dist > ref1 cm means any obstacle is more than ref1 (default 35 cm) away. Out of Warning & Danger Zone.
         print(f"Dist: {dist}, get_status_at returns: 2")
         return 2
-    elif dist > ref2: # between 10 cm  and 35 cm, there is something. avoid.
+    elif dist > ref2:
+        # Warning zone: obstacle between close boundary ref2 (default 10 cm) and outer boundary ref1.
+        # note: 10 cm is distance between center of ultrasonic module and outer edge of tire
         print(f"Dist: {dist}, get_status_at returns: 1")
         return 1
     else:
+        # DAnger zone: between 0 and close boundary ref2.
         print(f"Dist: {dist}, get_status_at returns: 0")
-        return 0 # what, less than 10 cm? definitely avoid. actually, stop.
+        return 0
 
-def scan_step(ref): # this increments & decrements the angle at which the ultra sonic module takes a sample, then
-    # uses "get_status_at" to take said sample
+
+def scan_step(ref):
+    # this increments & decrements the angle at which the ultrasonic module takes a sample, then
+    # uses "get_status_at" to see whether said sample has obstacles (see 2,1,0 zones above)
     global scan_list, current_angle, us_step
     current_angle += us_step
     print(f"Current angle: {current_angle}")
