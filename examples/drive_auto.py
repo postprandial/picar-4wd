@@ -6,7 +6,7 @@ import picar_4wd as fc
 
 speed = 5 # slow
 turn_speed = 20
-distance = 25 # 25 centimeter, argument for scan_step below
+distance = 35 # 25 centimeter, argument for scan_step below
 
 def random_direction():
     '''picks either left or right and time period between 0.5 and 2 seconds for turning '''
@@ -38,18 +38,14 @@ def main():
         if tmp != [2,2,2,2]: # 2 seems to mean "no obstacle". If those samples from the front
             # (0 - 36 degrees left/right) are not 2, that means an obstacle exists here.
             # for now, simply backs up only for one second
-            fc.stop()
             fc.backward(speed)
             time.sleep(1)
             fc.stop()
             # picks random new direction
             turn_this_way, duration = random_direction()
-            turn_this_way(duration)
+            turn_this_way(turn_speed) #this is faster for obvious reasons
+            time.sleep(duration)
             fc.stop()
-        else:
-            pass
-        print(f"Next round in 3 seconds")
-        time.sleep(3) # this buys us 3 seconds to take notes or reset obstacles
         test_round += 1
 
 
