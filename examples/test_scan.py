@@ -20,8 +20,9 @@ def main():
         if not scan_list:
             continue
 
-        tmp = scan_list[3:7] # out of 10 samples, this list slice keeps samples 4,5,6,7, so the area in front of
-        # the car (it discards samples taken from the sides, ie. more than 36 degree to either left or right).
+        tmp = scan_list[7:12] # out of x samples, this list slice keeps samples listed which are the area in front of
+        # the car. If it doesn't compare values in __init__ in the sonic module section, and experimentation
+        # might have thrown this off to no longer be "the middle"
         print(f"This is tmp: {tmp}")
         print(f"This is scan_list: {scan_list}")
         if tmp != [2,2,2,2]: # 2 seems to mean "no obstacle". If those samples from the front

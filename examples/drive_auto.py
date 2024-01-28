@@ -25,7 +25,7 @@ def main():
         if not scan_list:
             continue
 
-        tmp = scan_list[2:8] # out of 10 samples, this list slice keeps samples 3,4,5,6,7,8 so the area in front of
+        tmp = scan_list[7:12] # out of 10 samples, this list slice keeps samples 3,4,5,6,7,8 so the area in front of
         # the car (it discards samples taken from the sides)
         print(f"This is tmp: {tmp}")
         print(f"This is scan_list: {scan_list}")
