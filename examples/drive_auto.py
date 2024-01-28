@@ -18,6 +18,7 @@ def main():
     test_round = 1
     while True:
         print(f"round {test_round} begins")
+        fc.forward(speed)
         scan_list = fc.scan_step(distance) # scan_step returns a list containing 10 samples from the ultrasonic module
         # taken every 9 degrees (for a 90 degree field). It looks for obstacles at a distance of up to
         # 35 centimeters (the value of distance).
@@ -40,8 +41,7 @@ def main():
             turn_this_way(turn_speed) #this is faster for obvious reasons
             time.sleep(duration) #duration is how long it spins
             fc.stop()
-        else:
-            fc.forward(speed)
+
         test_round += 1
 
 
