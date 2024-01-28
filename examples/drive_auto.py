@@ -35,7 +35,7 @@ def main():
         # grab center 4 samples from scan_list with even number of samples (5 samples if odd number)
         scan_list_size = int(len(scan_list))
         start_sample, end_sample = (scan_list_size//2 - 2), (scan_list_size//2 + 2) # indices to slice "center samples"
-        no_obstacles = [2 for i in scan_list[start_sample, end_sample]]
+        no_obstacles = [2 for i in scan_list[start_sample: end_sample]]
         # no_obstacles is what "tmp" would look like if no obstacles were detected
         # 2 means "no obstacles"
         # 1 means "obstacles between outer boundary ref1 and near boundary ref2 cm - close but not yet too close
