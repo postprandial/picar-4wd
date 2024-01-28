@@ -119,7 +119,7 @@ def do(msg="", cmd=""):
 def get_distance_at(angle):
     global angle_distance
     servo.set_angle(angle)
-    time.sleep(0.04)
+    time.sleep(0.02) #formerly 0.04
     distance = us.get_distance()
     angle_distance = [angle, distance]
     return distance
