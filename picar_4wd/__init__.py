@@ -12,9 +12,6 @@ from .utils import *
 import time
 from .version import __version__
 
-#David test
-print("Testing library")
-
 soft_reset()
 time.sleep(0.2)
 
@@ -85,13 +82,13 @@ def get_line_status(ref,fl_list):#170<x<300
 
 ########################################################
 # Ultrasonic
-ANGLE_RANGE = 180
+ANGLE_RANGE = 145
 STEP = 9
 us_step = STEP
 angle_distance = [0,0]
 current_angle = 0
-max_angle = ANGLE_RANGE/4
-min_angle = -ANGLE_RANGE/4
+max_angle = ANGLE_RANGE/2
+min_angle = -ANGLE_RANGE/2
 scan_list = []
 
 errors = []
@@ -208,6 +205,7 @@ def set_motor_power(motor, power):
         left_rear.set_power(power)
     elif motor == 4:
         right_rear.set_power(power)
+
 
 # def speed_val(*arg):
 #     if len(arg) == 0:
