@@ -82,8 +82,8 @@ def get_line_status(ref,fl_list):#170<x<300
 
 ########################################################
 # Ultrasonic
-ANGLE_RANGE = 180
-STEP = 18
+ANGLE_RANGE = 90
+STEP = 9
 us_step = STEP
 angle_distance = [0,0]
 current_angle = 0
@@ -119,23 +119,37 @@ def do(msg="", cmd=""):
 def get_distance_at(angle):
     global angle_distance
     servo.set_angle(angle)
-    time.sleep(0.04)
+    time.sleep(0.02) #formerly 0.04
     distance = us.get_distance()
     angle_distance = [angle, distance]
     return distance
 
+
 def get_status_at(angle, ref1=35, ref2=10):
     dist = get_distance_at(angle)
     if dist > ref1 or dist == -2:
+        # -2 is a timeout, so obstacles are far away.
+        # dist > ref1 cm means any obstacle is more than ref1 (default 35 cm) away. Out of Warning & Danger Zone.
+        print(f"Dist: {dist}, get_status_at returns: 2")
         return 2
     elif dist > ref2:
+        # Warning zone: obstacle between close boundary ref2 (default 10 cm) and outer boundary ref1.
+        # note: 10 cm is distance between center of ultrasonic module and outer edge of tire
+        print(f"Dist: {dist}, get_status_at returns: 1")
         return 1
     else:
+        # DAnger zone: between 0 and close boundary ref2.
+        print(f"Dist: {dist}, get_status_at returns: 0")
         return 0
 
+
 def scan_step(ref):
+    # this increments & decrements the angle at which the ultrasonic module takes a sample, then
+    # uses "get_status_at" to see whether said sample has obstacles (see 2,1,0 zones above)
     global scan_list, current_angle, us_step
     current_angle += us_step
+    print(f"Current angle: {current_angle}")
+    print(f"us_step: {us_step}")
     if current_angle >= max_angle:
         current_angle = max_angle
         us_step = -STEP
@@ -197,6 +211,7 @@ def set_motor_power(motor, power):
         left_rear.set_power(power)
     elif motor == 4:
         right_rear.set_power(power)
+
 
 # def speed_val(*arg):
 #     if len(arg) == 0:

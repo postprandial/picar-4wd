@@ -4,8 +4,8 @@ from picar_4wd.pwm import PWM
 from picar_4wd.pin import Pin
 
 class Ultrasonic():
-    ANGLE_RANGE = 180
-    STEP = 18
+    ANGLE_RANGE = 180 # rotate 180 degrees
+    STEP = 18 #every 18 degrees
 
     def __init__(self, trig, echo, timeout=0.01):
         self.timeout = timeout
@@ -37,7 +37,8 @@ class Ultrasonic():
             if pulse_end - timeout_start > self.timeout:
                 return -2
         during = pulse_end - pulse_start
-        cm = round(during * 340 / 2 * 100, 2)
+        cm = round(during * 340 / 2 * 100, 2) # can be improved since technically, speed of sound is 34300 cm/s but
+        # probably just disappears in the rounding. or not. try it out. hmm. 17 versus 17.15 cm. (0.001 s roundtrip)
         #print(cm)
         return cm
 
