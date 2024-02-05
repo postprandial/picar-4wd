@@ -4,8 +4,8 @@
 import picar_4wd as fc
 import time, random
 
-power = 5 # slow for driving forward and backward.
-turn_power = 20 # faster for turning
+power = 10 # slow for driving forward and backward.
+turn_power = 30 # faster for turning
 distance = 35 # argument for scan_step below so ultrasonic module looks for obstacles up to 35 cm
 
 # note on speed vs power: example scripts call the parameter for fc.forward, etc. alternatingly power or speed
@@ -34,7 +34,7 @@ def main():
 
         # grab center 4 samples from scan_list with even number of samples (5 samples if odd number)
         scan_list_size = int(len(scan_list))
-        start_sample, end_sample = (scan_list_size//2 - 2), (scan_list_size//2 + 2) # indices to slice "center samples"
+        start_sample, end_sample = (scan_list_size//2 - 4), (scan_list_size//2 + 4) # indices to slice "center samples"
         no_obstacles = [2 for i in scan_list[start_sample: end_sample]]
         # no_obstacles is what "tmp" would look like if no obstacles were detected
         # 2 means "no obstacles"

@@ -28,7 +28,7 @@ def main():
             continue
 
         scan_list_size = int(len(scan_list))
-        start_sample, end_sample = (scan_list_size//2 - 3), (scan_list_size//2 + 3)
+        start_sample, end_sample = (scan_list_size//2 - 4), (scan_list_size//2 + 4)
         no_obstacles = [2 for i in scan_list[start_sample: end_sample]]
 
         tmp = scan_list[start_sample:end_sample]
