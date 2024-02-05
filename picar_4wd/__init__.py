@@ -82,7 +82,7 @@ def get_line_status(ref,fl_list):#170<x<300
 
 ########################################################
 # Ultrasonic
-ANGLE_RANGE = 90
+ANGLE_RANGE = 54
 STEP = 9
 us_step = STEP
 angle_distance = [0,0]
