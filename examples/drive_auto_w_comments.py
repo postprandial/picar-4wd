@@ -4,8 +4,8 @@
 import picar_4wd as fc
 import time, random
 
-power = 20 # slow for driving forward and backward.
-turn_power = 35 # faster for turning
+power = 15 # slow for driving forward and backward.
+turn_power = 20 # faster for turning
 distance = 35 # argument for scan_step below so ultrasonic module looks for obstacles up to 35 cm
 
 # note on speed vs power: example scripts call the parameter for fc.forward, etc. alternatingly power or speed
