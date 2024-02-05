@@ -4,8 +4,8 @@
 import picar_4wd as fc
 import time, random
 
-power = 5
-turn_power = 20
+power = 20
+turn_power = 30
 distance = 35
 
 
@@ -35,7 +35,7 @@ def main():
 
         if tmp != no_obstacles:
             fc.backward(power)
-            time.sleep(1)
+            time.sleep(0.5)
             turn_this_way, duration = random_direction(1,2)
             turn_this_way(turn_power)
             time.sleep(duration)
