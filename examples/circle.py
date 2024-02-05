@@ -1,4 +1,4 @@
-# Test 3 - keeps doing action until you hit enter
+# Test file - keeps doing action until you hit enter
 import picar_4wd as fc
 import time, sys, select
 
