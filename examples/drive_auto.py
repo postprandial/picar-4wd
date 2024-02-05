@@ -4,8 +4,8 @@
 import picar_4wd as fc
 import time, random
 
-power = 10
-turn_power = 30
+power = 20
+turn_power = 35
 distance = 35
 
 
@@ -28,7 +28,7 @@ def main():
             continue
 
         scan_list_size = int(len(scan_list))
-        start_sample, end_sample = (scan_list_size//2 - 4), (scan_list_size//2 + 4)
+        start_sample, end_sample = (scan_list_size//2 - 3), (scan_list_size//2 + 3)
         no_obstacles = [2 for i in scan_list[start_sample: end_sample]]
 
         tmp = scan_list[start_sample:end_sample]
