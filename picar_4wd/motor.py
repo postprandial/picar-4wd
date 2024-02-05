@@ -14,7 +14,10 @@ class Motor():
     #     self.t = threading.Timer(self.DELAY, self.adder_thread)
     #     self.t.start()
 
+
     def set_power(self, power):
+        self.pwm_pin.init(self.pwm_pin.channel)
+        self.pwm_pin.pulse_width_percent(power)
         if power >= 0:
             direction = 0
         elif power < 0:
