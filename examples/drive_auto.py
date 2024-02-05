@@ -4,7 +4,7 @@
 import picar_4wd as fc
 import time, random
 
-power = 20
+power = 10
 turn_power = 30
 distance = 35
 
