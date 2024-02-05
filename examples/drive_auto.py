@@ -36,7 +36,7 @@ def main():
         if tmp != no_obstacles:
             fc.backward(power)
             time.sleep(1)
-            turn_this_way, duration = random_direction(1,2)
+            turn_this_way, duration = random_direction(1,1.5)
             turn_this_way(turn_power)
             time.sleep(duration)
             fc.stop()
